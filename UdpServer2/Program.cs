@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 /* 
- * UDP수신 프로그램 - 브로드캐스트된 데이터를 수신
+ * UDP 수신 프로그램 - 멀티케스트된 데이터를 수신
  */
 
 namespace UdpServer2
@@ -18,24 +18,26 @@ namespace UdpServer2
     {
         static void Main(string[] args)
         {
-            UdpClient recver = new UdpClient(12000);
+            //UdpClient 객체 생성 - 13000 포트
+            
+            //IPAddess 객체 생성- 가입할 멀티캐스트 주소를 저장할 객체 224.0.1.0
+            
+            //멀티캐스트 가입
+            
+            //IPEndPoint 객체 생성 - 0.0 인자로 사용
+            
+            //데이터 수신 - byte[]
+            
+            //byte[] 을 MemoryStream에 객체생성시 인자값으로 사용
+            
+            //MemoryStream에 커서위치를 데이터 맨앞으로 이동
+            
+            //BinaryFormatter로 Deserialize 메소드 호출로 string 변환
+            
+            // 결과 출력
+            
+            //UdpClient 객체 연결 종료
 
-            IPEndPoint src_ip = new IPEndPoint(0, 0);
-            byte[] recv_data;
-            BinaryFormatter formatter = new BinaryFormatter();
-            MemoryStream stream = new MemoryStream();
-            string result;
-            for(; ; )
-            {
-                recv_data = recver.Receive(ref src_ip);
-                stream.Write(recv_data, 0, recv_data.Length);
-                stream.Seek(0, SeekOrigin.Begin);
-                result = (string)formatter.Deserialize(stream);
-                Console.WriteLine("수신된 데이터 : {0}", result);
-                stream.SetLength(0);
-            }
-
-            recver.Close();
         }
     }
 }
